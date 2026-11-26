@@ -1,0 +1,275 @@
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100dvh;
+    background: radial-gradient(
+        ellipse at center,
+        #b5263e,
+        #620b1c 55%,
+        #210309
+    );
+    color: #ffe9bb;
+    font-family: Georgia, serif;
+    overflow: hidden;
+    transition: background 2s ease;
+}
+
+body.green {
+    background: radial-gradient(
+        ellipse at center,
+        #398c69,
+        #123c2a 65%,
+        #041b12
+    );
+}
+
+section {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    transition: opacity 1s ease, transform 1s ease;
+}
+
+.hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transform: scale(.9);
+}
+
+.book {
+    width: min(340px, 85vw);
+    height: min(510px, 79dvh);
+    position: relative;
+    perspective: 1800px;
+    border-radius: 5px 15px 15px 5px;
+    box-shadow: 15px 25px 65px #0009;
+}
+
+.cover {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    transform-origin: left center;
+    transform-style: preserve-3d;
+    backface-visibility: hidden;
+    transition: transform 2.3s ease-in-out;
+    border-radius: 5px 15px 15px 5px;
+    padding: 17px;
+    cursor: pointer;
+
+    background:
+        repeating-linear-gradient(
+            35deg,
+            #ffffff04 0 2px,
+            transparent 2px 5px
+        ),
+        linear-gradient(
+            90deg,
+            #270e07,
+            #734024 7%,
+            #401509 12%,
+            #793d21 60%,
+            #3c1208
+        );
+
+    border: 2px solid #a67835;
+    box-shadow:
+        inset 0 0 40px #0009,
+        5px 5px 2px #362009;
+}
+
+.frame {
+    height: 100%;
+    border: 4px double #cba55c;
+    outline: 1px solid #9c733b;
+    outline-offset: 5px;
+    border-radius: 9px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-evenly;
+    text-align: center;
+    padding: 12px;
+}
+
+.cover h1 {
+    font-size: clamp(30px, 9vw, 47px);
+    font-weight: normal;
+    color: #e6c17b;
+    text-shadow: 1px 3px 3px #000;
+}
+
+.decoration {
+    font-size: 40px;
+    color: #e2bc72;
+}
+
+.small {
+    font-style: italic;
+    font-size: 13px;
+    color: #dec49b;
+}
+
+.heart {
+    font-size: 65px;
+    color: #e7c17d;
+}
+
+.page {
+    position: absolute;
+    inset: 0;
+    border-radius: 4px 12px 12px 4px;
+    background:
+        radial-gradient(
+            ellipse,
+            #fff1ce,
+            #e8cf98 75%,
+            #b08b50
+        );
+    color: #50301c;
+    padding: 19px;
+    border-right: 7px double #aa8c56;
+    box-shadow: inset 12px 0 24px #63401b55;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.ornament {
+    color: #98682d;
+    font-size: 25px;
+}
+
+.page h2 {
+    font-size: 23px;
+    margin: 5px 0 12px;
+    font-weight: normal;
+}
+
+.letter {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 5px;
+    text-align: left;
+    font-size: 15px;
+    line-height: 1.65;
+    scrollbar-width: thin;
+    scrollbar-color: #b79357 transparent;
+}
+
+.letter p {
+    margin-bottom: 12px;
+}
+
+.book.open .cover {
+    transform: rotateY(-178deg);
+    pointer-events: none;
+}
+
+button {
+    cursor: pointer;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 30px;
+    transition: transform .35s ease,
+                background .35s ease;
+}
+
+#finish {
+    margin-top: 12px;
+    background: #704321;
+    color: #ffe9b8;
+    font-size: 13px;
+}
+
+.questionBox {
+    width: min(440px, 90vw);
+    text-align: center;
+    padding: 35px 25px;
+    border: 1px solid #ffffff55;
+    border-radius: 25px;
+    background: #ffffff0d;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 20px 70px #0004;
+}
+
+.questionBox h1 {
+    font-size: clamp(29px, 7vw, 42px);
+    margin: 20px 0;
+    font-weight: normal;
+}
+
+.questionBox p {
+    font-size: 17px;
+    line-height: 1.7;
+    margin: 12px 0;
+}
+
+.bigHeart {
+    font-size: 85px;
+    color: #ffdcb4;
+    animation: heartbeat 1.8s infinite;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 18px;
+    margin-top: 30px;
+}
+
+#yes {
+    background: #edddba;
+    color: #234b36;
+    box-shadow: 0 0 25px #fff3;
+}
+
+#no {
+    background: #ffffff16;
+    color: #fff;
+    border: 1px solid #ffffff66;
+}
+
+#particles {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.particle {
+    position: absolute;
+    bottom: -30px;
+    color: #ffdda0;
+    animation: floatUp linear infinite;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg);
+        opacity: 0;
+    }
+    20%, 70% {
+        opacity: .8;
+    }
+    100% {
+        transform: translateY(-115vh) rotate(90deg);
+        opacity: 0;
+    }
+}
+
+@keyframes heartbeat {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.12); }
+}
